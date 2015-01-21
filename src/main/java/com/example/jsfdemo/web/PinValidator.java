@@ -10,18 +10,17 @@ import javax.faces.validator.ValidatorException;
 @FacesValidator("pinValidator")
 public class PinValidator implements Validator {
 
-	@Override
-	public void validate(FacesContext context, UIComponent component, Object value)
-			throws ValidatorException {
-		
-		String pesel = (String) value;
-		
-		if (pesel.length() != 4) {
-			FacesMessage message = new FacesMessage();
-			message.setDetail("PIN musi składać się z 4 cyfr");
-			message.setSummary("PIN musi składać się z 4 cyfr");
-			message.setSeverity(FacesMessage.SEVERITY_ERROR);
-			throw new ValidatorException(message);
-		}
-	}
+    @Override
+    public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
+
+        String pesel = (String) value;
+
+        if (pesel.length() != 11) {
+            FacesMessage message = new FacesMessage();
+            message.setDetail("PESEL musi składać się z 11 cyfr");
+            message.setSummary("PESEL musi składać się z 11 cyfr");
+            message.setSeverity(FacesMessage.SEVERITY_ERROR);
+            throw new ValidatorException(message);
+        }
+    }
 }

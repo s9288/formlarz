@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/templates/default.xhtml"
+	xmlns:rich="http://richfaces.org/rich">
+	<ui:define name="content">
+
+		<h:form id="patientForm">
+			<ui:remove>
+				<f:event type="postValidate"
+					listener="#{patientBean.validatePinDob}" />
+			</ui:remove>
+			<h:panelGrid columns="2">
+
+				<h:outputText value="#{msg.personFirstNameLabel}" />
+				<h:inputText id="firstName" value="#{patientBean.patient.firstName}"
+					required="#{true}" />
+				<h:outputText value="#{msg.patientSecoundNameLabel}" />
+				<h:inputText id="secoundName"
+					value="#{patientBean.patient.secoundName}" required="#{true}" />
+
+				<h:outputText value="#{msg.patientCityCodeLabel}" />
+				<h:inputText id="city" value="#{patientBean.patient.city}" />
+
+				<h:outputText value="#{msg.patientStreetLabel}" />
+				<h:inputText id="street" value="#{patientBean.patient.street}" />
+
+				<h:outputText value="#{msg.patientZipCodeLabel}" />
+				<h:inputText id="zipCode" value="#{patientBean.patient.zipCode}" />
+
+				<h:outputText value="#{msg.patientPinLabel}" />
+				<h:inputText id="pin" value="#{patientBean.patient.pin}"
+					validator="#{patientBean.uniquePin}" required="#{true}">
+					<f:validator validatorId="pinValidator" />
+				</h:inputText>
+
+
+				<h:outputText value="#{msg.patientPhoneNumber}" />
+				<h:inputText id="phoneNumber"
+					value="#{patientBean.patient.phoneNumber}" />
+				<h:outputText value="#{msg.patientDoctorLabel}" />
+				<h:inputText id="doctorKind"
+					value="#{patientBean.patient.doctorKind}" />
+
+				
+			</h:panelGrid>
+
+			<h:commandButton value="#{msg.personFormOKButton}"
+				action="#{patientBean.addPatient}" />
+
+
+			<h:panelGrid>
+				<h:messages id="messages" showDetail="#{true}"
+					showSummary="#{false}" />
+			</h:panelGrid>
+		</h:form>
+
+	</ui:define>
+</ui:composition>

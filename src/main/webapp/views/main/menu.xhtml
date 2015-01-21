@@ -7,17 +7,13 @@
 	<h:form>
 	  <ul>
 		<li>
-		  <h:commandLink action="home?faces-redirect=true">
-			<h:outputText value="#{msg.linkHome}" />
+		  <h:commandLink action="addPatient?faces-redirect=true">
+			 <h:outputText value="#{msg.patientAddLabel}" />
 		  </h:commandLink>
 		</li>
 		<li>
-		  <h:commandLink action="add?faces-redirect=true">
-			<h:outputText value="#{msg.personAddLabel}" />
-		  </h:commandLink></li>
-		<li>
-		  <h:commandLink action="showPersons?faces-redirect=true">
-			 <h:outputText value="#{msg.personAllLabel}" />
+		  <h:commandLink action="showPatients?faces-redirect=true">
+			 <h:outputText value="#{msg.patientShowAllLabel}" />
 		  </h:commandLink>
 		</li>
 	</ul>
